@@ -4,13 +4,85 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <title>Max VR</title>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script><script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
 </head>
-
-<body>
-  Hello world
   <script src="script.js"></script>
-</body>
 
-</html>
+<body> 
+  
+<a-scene>
+<!--Assets-->
+  <a-assets>
+    <img id=cat src="images/rittlekity.jpeg" title="banksithekity" preload="auto">
+    <img id=cat2 src="images/kiki.jpeg" title="kikithecat" preload="auto">
+     <img id=cat3 src="images/banksithecat2.jpeg" title="banksi" preload="auto">
+    <!--Video-->
+    <video id="videoclip" loop="true" src="tvAssets/harry_potter.mp4" crossorigin="anonymous" preload="auto"></video>
+    <!-- Buttons and Background -->
+    <img id="play" src="tvAssets/btnPlay.png" preload="auto">
+    <img id="pause" src="tvAssets/btnPause.png" preload="auto">
+    <img id="tv_background" src="tvAssets/tv_background.jpg" preload="auto">
+
+</a-assets>
+  <a-entity environment="preset:goldmine; dressingAmount:400; skyColor:white; skyType : gradient; shadow: true; shadowSize: 150; groundColor:white; groundTexture:walkernoise;dressing: towers; dressingscale: 5; dressing: cylinders; dressingscale: 50;"></a-entity>
+
+  <!--Museum-->
+  <!-- Museum floor starts here -->
+  <a-box id="floor" position="0 0 0" rotation="90 0 0" color="white" scale="10.5 10.5 0.1" ></a-box>
+  <a-box id=wall1 position="0 1.473 4.907" rotation="0 0 0" color="white" scale="10 30000.2"></a-box>
+  <a-box id=wall2 position="0 1.473 -4.907" rotation="0 0 0" color="white" scale="10 30000.2"></a-box> 
+  <a-box id=wall3 position="5.049 1.454 -0.008" rotation="0 -90 0" rotation="0 -90 0" color="white" scale="10 30000 0.2"></a-box>
+  <a-box id=wall4 position="-5.049 1.454 -0.008" rotation="0 -90 0" rotation="0 -90 0" color="white" scale="10 30000.2"></a-box> 
+  <a-cylinder id="triangle_front" segments-radial="3" position="0 30000 4.907" rotation="-90 0 0" scale="5.774 0.2 1.8" color="white"></a-cylinder>
+  <a-box id="roof_right" position="2.580 30000.328 0" rotation="28.433 90 0" scale="10.931 0.20 6.110" color="white"></a-box>
+<!--end of museum-->
+  <!--start of art-->
+<!--start of banksi-->
+  <a-plane id="art1" src="#cat" scale="10.000 10.000 0.060" rotation="0 0 0" position="-0.162 4.254 -4.225"></a-plane>
+  <!--end of banksi-->
+  <!--start of kiki-->
+  <a-plane id="art2" src="#cat2" scale="10.000 10.000 0.060" rotation="0 180 0" position="-0.162 4.254 3.996"></a-plane>
+  <!--end of kiki-->
+  <!--start of banksi2-->
+   <a-plane id="cat3" src="#cat3" scale="10.000 10.000 0.060" rotation="0 -90 0" position="4.677 4.234 -0.483"></a-plane>asd
+  <!--end of banksi2-->
+  <!--end of art-->
+  <!-- 3d object -->
+  <a-obj-model id="3dModel1" src="images/tinker.obj" mtl="images/obj.mtl" position="0 10 0" rotation="-90 0 0" scale="0.1 0.1 0.1"></a-obj-model>
+  <!--end of 3d object-->
+  <!--TV-->
+  <a-entity>
+
+    <a-video src="#videoclip" position="-3.893 1.6 0" rotation="0 90 0" width="2" height="1.125"></a-video>
+
+    <!-- TV background -->
+    <a-plane id="videoControls" position="-4.152 0.854 0" scale="2 0.386 1.714" rotation="0 90 0" opacity="1" src="#tv_background">
+      <!-- Play button -->
+      <a-plane id="vidplaybox" src="#play" scale="0.122 0.678 0.122" position="-0.350 0 .01" shader="flat" transparent="true" videoplayer></a-plane>
+      <!-- Stop button -->
+      <a-plane id="vidpausebox" src="#pause" scale="0.122 0.678 0.122" position="0.350 0 .01" shader="flat" transparent="true" videopauser></a-plane>
+    </a-plane>
+  </a-entity>
+  <!-- Allows clicking with the mouse -->
+  <a-entity cursor="rayOrigin: mouse"></a-entity>
+  <!-- Box to place all the media items on -->
+  <a-box id="media_bg" scale="1 1 0.05" position="0 1.5 -1" rotation="0 0 0" src="#imgBg" shader="flat">
+  <!-- Sound track and Image of art work -->
+  <a-plane id="track1" sound="src: #art1Audio" src="#imgArt1" scale="0.512 0.683 0" position="-0.006 0.070 0.6" shader="flat" > </a-plane>
+  <!-- Label with text at the bottom of artwork -->
+  <a-plane id=”infobox” position="0 -0.4 0.6" scale="0.5 0.4 0.01" width=".8" height=".25" color="black" transparent="true" opacity="1" >
+  <a-entity color="#191817" text="value: CAT \n \n HERE, NOW; align:center" position="0 0 0.05" scale="1.122 1.466
+  1.273" shader="flat">
+  </a-entity>
+  </a-plane>
+  <!-- Play Button image -->
+  <a-plane id="playbox" src="#play" scale="0.12 0.12 0.01" position="-0.35 -0.4 0.6" shader="flat" transparent="true" songplayer1 ></a-plane>
+  <!-- Stop Button image -->
+  <a-plane id="stopbox" src="#Stop" scale="0.12 0.12 0.01" position="0.350 -0.4 0.6" shader="flat" transparent="true" songstopper1></a-plane>
+  </a-box>
+
+  
+</a-scene>
+  </body>
+  </html>
